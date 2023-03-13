@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+</head>
+<body>
+	<section>
+		<input type="text" name="" placeholder="name" id="first"/><br>
+		<input type="number" name=""id="second" placeholder="id" /><br>
+		<button onclick="submit()">get</button id=>
+	</section>
+	<script type="text/javascript">
+		function submit(){
+		var name=document.getElementById("first").value
+		var id=document.getElementById("second").value
+		console.log(name,id)
+		fetch("https://reqres.in/api/users?page=2",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:name,Id:id})
+		})
+		.then((res)=>{
+			console.log(res)
+			return res.json()
+		})
+		.then((jsonres)=>{
+			console.log(jsonres)
+		})
+
+	}
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<section id="empinfo">
+		
+	</section>
+	<script type="text/javascript">
+		fetch("https://reqres.in/api/users?page=2")
+		.then((res)=>{
+			console.log(res)
+			return res.json()
+		})
+		.then((jsonResponse)=>{
+			console.log(jsonResponse.data)
+			displayjsonResponse(jsonResponse.data)
+		})
+		function displayjsonResponse(employees){
+			console.log("we got the jsonresponse from function",employees)
+				/*employees.map((p)=>{
+				console.log(p.first_name)
+				console.log(p.email)
+	
+		})
+			employees.forEach((p)=>{
+				console.log(p.first_name,p.email)
+			})*/
+
+			var empinfo=document.querySelector("#empinfo");
+			employees.map((p)=>{
+				empinfo.innerHTML+=`
+					<div>
+						<p>${p.first_name}</p>
+						<p>${p.email}</p>
+						<img src="${p.avatar}" width="20%">
+
+
+					</div>
+
+				`
+			})
+
+
+
+
+		}
+
+	</script>
+
+</body>
+</html>
